@@ -8,6 +8,7 @@
 
 #import "QTMainTableViewController.h"
 #import "QTRefreshView.h"
+#import "UIScrollView+Refresh.h"
 
 @interface QTMainTableViewController ()
 @property (nonatomic,strong) NSArray  *allCities;
@@ -39,6 +40,9 @@
         });
         
     }];
+    
+//    self.tableView.qt_header = [QTRefreshView ]
+    
 }
 
 - (NSArray*)loadData {

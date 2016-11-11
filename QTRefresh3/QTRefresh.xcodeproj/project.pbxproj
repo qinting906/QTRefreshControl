@@ -22,6 +22,7 @@
 		B70F3FE21DD6392000134D1C /* rabbit_loading3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B70F3FE11DD6392000134D1C /* rabbit_loading3@2x.png */; };
 		B70F3FE51DD6394100134D1C /* QTMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B70F3FE41DD6394100134D1C /* QTMainTableViewController.m */; };
 		B70F3FE71DD6435300134D1C /* rabbit_loading1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B70F3FE61DD6435300134D1C /* rabbit_loading1@2x.png */; };
+		B70F3FEA1DD64CB500134D1C /* UIScrollView+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B70F3FE91DD64CB500134D1C /* UIScrollView+Refresh.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		B70F3FE31DD6394100134D1C /* QTMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTMainTableViewController.h; sourceTree = "<group>"; };
 		B70F3FE41DD6394100134D1C /* QTMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTMainTableViewController.m; sourceTree = "<group>"; };
 		B70F3FE61DD6435300134D1C /* rabbit_loading1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rabbit_loading1@2x.png"; sourceTree = "<group>"; };
+		B70F3FE81DD64CB500134D1C /* UIScrollView+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Refresh.h"; sourceTree = "<group>"; };
+		B70F3FE91DD64CB500134D1C /* UIScrollView+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Refresh.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				B70F3FD21DD638E900134D1C /* images */,
 				B70F3FCE1DD6388200134D1C /* QTRefreshView.h */,
 				B70F3FCF1DD6388200134D1C /* QTRefreshView.m */,
+				B70F3FE81DD64CB500134D1C /* UIScrollView+Refresh.h */,
+				B70F3FE91DD64CB500134D1C /* UIScrollView+Refresh.m */,
 			);
 			name = QTRefresh;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				B70F3FBC1DD6385200134D1C /* AppDelegate.m in Sources */,
 				B70F3FB91DD6385200134D1C /* main.m in Sources */,
 				B70F3FE51DD6394100134D1C /* QTMainTableViewController.m in Sources */,
+				B70F3FEA1DD64CB500134D1C /* UIScrollView+Refresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +370,7 @@
 				B70F3FCD1DD6385200134D1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
