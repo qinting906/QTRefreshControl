@@ -92,6 +92,7 @@ typedef enum {
     
 }
 
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
 //    NSLog(@"======%@===%f",change[@"new"],self.superScrollView.contentOffset.y);
     /** 
@@ -122,9 +123,11 @@ typedef enum {
     _currentStatu = currentStatu;
     switch (currentStatu) {
         case PullDownToRefreshViewStatusNormal:
+            // 结束动画
+            [self.imageView stopAnimating];
             self.label.text = @"下拉刷新";
             self.imageView.image = [UIImage imageNamed:@"rabbit_cry"];
-            self.superScrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            self.superScrollView.contentInset = UIEdgeInsetsMake(PullDownToRefreshViewHeight, 0, 0, 0);
             break;
         case PullDownToRefreshViewStatusPulling:
             self.label.text = @"释放刷新";
@@ -143,11 +146,14 @@ typedef enum {
             
             //tableView 下移
             [UIView animateWithDuration:0.25 animations:^{
-            self.superScrollView.contentInset = UIEdgeInsetsMake(PullDownToRefreshViewHeight*2,
+            self.superScrollView.contentInset = UIEdgeInsetsMake(PullDownToRefreshViewHeight +  self.superScrollView.contentInset.top,
                                                           self.superScrollView.contentInset.left,
                                                           self.superScrollView.contentInset.bottom,
                                                           self.superScrollView.contentInset.right);
             }];
+            // 让控制器去做事情
+            // Block的使用： 1.定义block 2.传递block 3.调用block
+            !self.refreshingBlock ? : self.refreshingBlock(); // 判断，不为空才调用block
             break;
         }
         default:
@@ -156,6 +162,12 @@ typedef enum {
 }
 
 
+// 更改状态 即会调用setter方法
+-(void)endRefresh{
+    if(self.currentStatu == PullDownToRefreshViewStatusRefreshing){
+        self.currentStatu = PullDownToRefreshViewStatusNormal;
+    }
+}
 -(void)dealloc{
     [self.superScrollView removeObserver:self forKeyPath:@"contentOffset"];
 }

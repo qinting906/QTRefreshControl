@@ -18,14 +18,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.allCities = @[@"beijing",@"shanghai",@"shenzhen"];
+    self.allCities = [self loadData];
     
     CGRect refreshFrame = CGRectMake(0, -60, [UIScreen mainScreen].bounds.size.width, 60);
     PullDownToRefreshView *refreshView  = [[PullDownToRefreshView alloc]initWithFrame:refreshFrame];
     refreshView.backgroundColor = [UIColor brownColor];
     [self.tableView addSubview:refreshView];
+    refreshView.refreshingBlock = ^(){
+        NSLog(@"控制器进入刷新状态了");
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 加载数据
+            NSArray *newData = [self loadData];
+            NSMutableArray *arrayM = [NSMutableArray arrayWithArray:newData];
+            [arrayM addObjectsFromArray:self.allCities]; // 在旧数据前面添加新数据
+            self.allCities = arrayM;
+            
+            [self.tableView reloadData];
+            //结束刷新
+            [refreshView  endRefresh];
+        });
+    };
 }
 
+-(NSArray *)loadData{
+   return @[@"beijing",@"shanghai",@"shenzhen"];
+}
 
 #pragma mark - Table view data source
 

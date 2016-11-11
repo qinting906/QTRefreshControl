@@ -10,4 +10,8 @@
 
 @interface PullDownToRefreshView : UIView
 
+@property (nonatomic,copy) void(^refreshingBlock)();
+
+-(void)endRefresh;
+
 @end
